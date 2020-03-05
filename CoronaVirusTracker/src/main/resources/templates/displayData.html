@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Corona Virus</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="all"
+          href="../../css/gtvg.css" th:href="@{/css/gtvg.css}" />
+</head>
+
+<body>
+<div class="container">
+<h1>Corona Virus Tracker</h1>
+<p>This helps us to get the total number of cases reported across the globe</p>
+
+<div class="jumbotron">
+    <h1 class="display-4" th:text="${totalCount}"></h1>
+    <p class="lead">Total Number of cases reported</p>
+    <hr class="my-4">
+    <p>
+        <span>Total number of new cases as of today</span>
+        <span th:text="${totalNewCases}">Total number of new cases</span>
+    </p>
+
+</div>
+
+<p th:text="${coronaVirusDataService}">Welcome to our grocery store!</p>
+<table class="table">
+    <tr>
+        <th>State</th>
+        <th>Country</th>
+        <th>Total Cases</th>
+        <th>Latest Cases</th>
+    </tr>
+    <tr th:each="stats : ${statsList}">
+        <td th:text="${stats.state} != ''  ? ${stats.state} : 'Unavailable'"></td>
+        <td th:text="${stats.country}"></td>
+        <td th:text="${stats.totalCases}">0</td>
+        <td th:text="${stats.difference}">0</td>
+
+    </tr>
+
+</table>
+</div>
+</body>
+
+</html>
